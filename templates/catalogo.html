@@ -1,0 +1,133 @@
+<!-- Archivo: templates/catalogo.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Biblioteca Digital</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilos.css') }}">
+    <!-- Agregamos FontAwesome para iconos bonitos (Opcional pero recomendado) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- BARRA DE NAVEGACIÓN -->
+    <nav class="navbar">
+        <div class="logo"><a href="/">📚 BiblioSQL</a></div>
+        <div class="toolbar">
+            <!-- Formulario de Búsqueda (Envía datos por GET a la misma página) -->
+            <form action="/catalogo" method="GET" class="search-form">
+                <input type="text" name="q" placeholder="Buscar título, autor o editorial..." value="{{ busqueda }}">
+                <button type="submit">Buscar</button>
+                <!-- Si hay búsqueda, mostramos botón para limpiar -->
+                {% if busqueda %}
+                    <a href="/catalogo" class="btn-clear">❌ Limpiar</a>
+                {% endif %}
+            </form>
+        </div>    
+        <div class="nav-links">
+            <a href="/catalogo">Catálogo</a>
+            <a href="/registrar">Registrar</a>
+        </div>
+    </nav>
+
+    <!-- ZONA DE MENSAJES FLASH -->
+    <div style="max-width: 1200px; margin: 20px auto;">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alerta alerta-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <div class="contenedor_cuerpo">
+        <h1>📚 Catálogo de Libros SQL</h1>
+        <p>Si el stock del libro es menor a 5 la casilla se colorea de rojo🔴.</p>
+
+        <div class="contenedor_registro">
+            <a href="/registrar" class="btn">➕ Registrar Nuevo Libro</a>
+            <a href="/descargar_excel" class="btn">📥 Descargar Inventario en Excel</a>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Categoría</th>
+                    <th>Autor</th>
+                    <th>Editorial</th>
+                    <th>Páginas</th>
+                    <th>Stock</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- AQUÍ COMIENZA LA MAGIA DE JINJA2 -->
+                {% for libro in libros %}
+                <tr>
+                    <td>{{ libro.nombre }}</td>
+                    <td>{{ libro.categoria }}</td>
+                    <td>{{ libro.autor }}</td>
+                    <td>{{ libro.editorial }}</td>
+                    <td>{{ libro.paginas }}</td>
+                    <!-- CELDA DE STOCK (AHORA CON EDICIÓN RÁPIDA) -->
+                    <td>
+            
+                        <!-- Creamos un mini formulario para cada fila -->
+                        <form action="/actualizar_stock" method="POST" class="form-stock">
+                
+                            <!-- Truco de Ninja: Input oculto con el ID del libro -->
+                            <input type="hidden" name="id_libro" value="{{ libro.id }}">
+                
+                            <!-- El número editable -->
+                            <input type="number" name="nuevo_stock" value="{{ libro.cantidad }}" min="0" class="input-stock {{ libro.clase_css_stock }}">
+
+                            <!-- Botón de guardar (icono de disquete) -->
+                            <button type="submit" class="btn-guardar" title="Actualizar Stock">💾</button>
+                        </form>
+                    </td>
+                    <td class="eliminar">
+                        <a href="/eliminar/{{ libro.id }}" class="btn-eliminar">
+                            🗑️ Eliminar
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+                <!-- FIN DEL BUCLE -->
+            </tbody>
+        </table>
+
+        {% if total_pages > 1 %}
+        <div class="pagination">
+            <!-- Botón Anterior -->
+            {% if page > 1 %}
+                <a href="/catalogo?page={{ page-1 }}&q={{ busqueda }}" class="page-link">⬅️ Anterior</a>
+            {% else %}
+                <span class="page-link disabled">⬅️ Anterior</span>
+            {% endif %}
+
+            <span class="page-info">Página {{ page }} de {{ total_pages }}</span>
+
+            <!-- Botón Siguiente -->
+            {% if page < total_pages %}
+                <a href="/catalogo?page={{ page+1 }}&q={{ busqueda }}" class="page-link">Siguiente ➡️</a>
+            {% else %}
+                <span class="page-link disabled">Siguiente ➡️</span>
+            {% endif %}
+        </div>
+        {% endif %}
+        <br>
+        <a href="/" class="btn">Volver al inicio</a>
+    </div>
+    
+
+    <!-- FOOTER -->
+    <footer>
+        <p>Desarrollado con Python Flask &copy; 2026 - Ingeniero Santiago Noreña</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>

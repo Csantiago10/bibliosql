@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar Libro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilos.css') }}">
+</head>
+<body>
+
+    <form action="/registrar" method="POST">
+        <h2 style="text-align: center;">Nuevo Libro</h2>
+        
+        <label>Título:</label>
+        <input type="text" name="nombre" required>
+        
+        <label>Categoría:</label>
+        <input type="text" name="categoria" required>
+
+        <label>Autor:</label>
+        <input type="text" name="autor" required>
+
+        <label>Editorial:</label>
+        <input type="text" name="editorial" required>
+
+        <label>Páginas:</label>
+        <input type="number" name="paginas" required>
+
+        <label>Cantidad (Stock):</label>
+        <input type="number" name="cantidad" required>
+
+        <button type="submit">Guardar Libro</button>
+        <p style="text-align: center;"><a href="/catalogo">Cancelar</a></p>
+    </form>
+
+</body>
+</html>

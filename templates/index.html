@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca Digital Pro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilos_portada.css') }}">
+</head>
+<body class="home-body">
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <nav class="navbar">
+        <div class="logo"><a href="/">📚 BiblioSQL</a></div>
+        <div class="nav-links">
+            <a href="/catalogo">Catálogo</a>
+            <a href="/registrar">Registrar</a>
+        </div>
+    </nav>
+
+    <!-- SECCIÓN HERO (PORTADA PRINCIPAL) -->
+    <header class="hero-section">
+        <div class="hero-content">
+            <h1>Gestión Inteligente de <br>Inventario Bibliotecario</h1>
+            <p>Administra libros, controla el stock en tiempo real y optimiza tu biblioteca con el poder de BiblioSQL.</p>
+            
+            <div class="cta-buttons">
+                <a href="/catalogo" class="btn-hero btn-primary">🚀 Ver Inventario</a>
+                <a href="/registrar" class="btn-hero btn-outline">➕ Nuevo Libro</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <!-- Icono gigante decorativo -->
+            <span style="font-size: 150px;">💾</span>
+        </div>
+    </header>
+
+    <!-- SECCIÓN DE CARACTERÍSTICAS (TARJETAS) -->
+    <section class="features-section">
+        <div class="card">
+            <div class="icon">⚡</div>
+            <h3>Rápido y Seguro</h3>
+            <p>Backend potenciado por SQLite y SQLAlchemy para máxima velocidad.</p>
+        </div>
+        <div class="card">
+            <div class="icon">📊</div>
+            <h3>Control de Stock</h3>
+            <p>Alertas visuales automáticas cuando el inventario es bajo.</p>
+        </div>
+        <div class="card">
+            <div class="icon">📂</div>
+            <h3>Reportes Excel</h3>
+            <p>Exporta tu base de datos completa con un solo clic.</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>Desarrollado con Python Flask &copy; 2026 - Ingeniero Santiago Noreña</p>
+    </footer>
+
+</body>
+</html>

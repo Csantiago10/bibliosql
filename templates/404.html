@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página no encontrada - 404</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilos.css') }}">
+</head>
+<body>
+
+    <!-- 1. Navbar -->
+    <nav class="navbar">
+        <a href="/" class="logo">📚 BiblioSQL</a>
+        <div class="nav-links">
+            <a href="/catalogo">Catálogo</a>
+        </div>
+    </nav>
+
+    <!-- 2. Contenido (Con main-container para empujar el footer) -->
+    <!-- Agregamos 'main-container' para la estructura y 'error-container' para el diseño -->
+    <div class="main-container error-container">
+        
+        <h1 class="error-code">404</h1>
+        <p class="error-message">¡Ups! Parece que este libro se perdió en la estantería equivocada.</p>
+        
+        <a href="/" class="btn-back">
+            🏠 Volver al Inicio
+        </a>
+
+    </div>
+
+    <!-- 3. Footer (Se quedará abajo) -->
+    <footer>
+        <p>Sistema de Gestión Bibliotecaria &copy; 2026</p>
+    </footer>
+
+</body>
+</html>

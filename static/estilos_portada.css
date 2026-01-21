@@ -1,0 +1,168 @@
+/* Archivo: static/portada.css */
+
+/* --- Configuración Base para la Portada --- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+/* --- Barra de Navegación --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky; /* Se queda pegada arriba */
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 800; /* Extra bold */
+    color: #2c3e50;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-links a {
+    margin-left: 30px;
+    color: #555;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.nav-links a:hover {
+    color: #4CAF50;
+}
+
+/* --- Sección HERO (El fondo degradado) --- */
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 100px 10%;
+    /* Degradado del Verde al Azul */
+    background: linear-gradient(135deg, #4CAF50 0%, #2980b9 100%);
+    color: white;
+    min-height: 500px; /* Un poco más alto */
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); /* Efecto de corte diagonal moderno */
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero-content h1 {
+    font-size: 56px;
+    margin-bottom: 20px;
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+.hero-content p {
+    font-size: 20px;
+    margin-bottom: 40px;
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+/* --- Botones Hero --- */
+.cta-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.btn-hero {
+    padding: 15px 35px;
+    border-radius: 50px; /* Redondos */
+    font-weight: bold;
+    font-size: 18px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn-hero:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.btn-primary {
+    background-color: white;
+    color: #4CAF50;
+}
+
+.btn-outline {
+    border: 2px solid rgba(255,255,255,0.8);
+    color: white;
+}
+
+.btn-outline:hover {
+    background-color: white;
+    color: #2980b9;
+    border-color: white;
+}
+
+/* --- Sección de Características (Cards) --- */
+.features-section {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 0 20px;
+    margin-top: -80px; /* Para que floten sobre el hero */
+    margin-bottom: 80px;
+    position: relative;
+    z-index: 10;
+}
+
+.card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 300px;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card .icon {
+    font-size: 50px;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.card h3 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.card p {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 40px;
+    color: #888;
+    background-color: #f9f9f9;
+    font-size: 14px;
+    border-top: 1px solid #eee;
+}
